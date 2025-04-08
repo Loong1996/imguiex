@@ -4,18 +4,18 @@
 #include "imguiex_widget.h"
 #include <functional>
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class CustomWidget : public Widget {
 public:
-    using RenderCallback = std::function<void()>;
+    using RenderCallback = std::function<void(Widget& ctx)>;
 
-    CustomWidget(const std::string& name, RenderCallback render_callback)
-        : Widget(name), render_callback_(render_callback) {}
+    CustomWidget(RenderCallback render_callback, const char* name = nullptr)
+        :  render_callback_(render_callback), Widget(name) {}
 
     virtual void Render() override {
         if (render_callback_) {
-            render_callback_();
+            render_callback_(*this);
         }
     }
 
@@ -23,7 +23,7 @@ private:
     RenderCallback render_callback_;
 };
 
-} // namespace imguiex
+} // namespace ImGuiEx
 
 
 #endif // IMGUIEX_CUSTOM_WIDGET_H_

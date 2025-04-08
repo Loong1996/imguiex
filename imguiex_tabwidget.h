@@ -5,11 +5,11 @@
 #include <memory>
 #include <vector>
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class TabWidget : public Widget {
 public:
-    TabWidget(const std::string& name);
+    explicit TabWidget(const char* name = nullptr);
     virtual ~TabWidget() override;
     virtual void Render() override;
     void AddTab(const std::string& tab_name, WidgetPtr tab);

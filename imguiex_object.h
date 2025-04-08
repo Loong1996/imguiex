@@ -3,16 +3,21 @@
 
 #include <memory>
 #include <string>
+#include <cstdint>
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class Object {
 public:
-    Object(const std::string& name) : name_(name) {}
+    explicit Object(const char* name = nullptr);
     virtual ~Object() = default;
     virtual void Render() = 0;
 
     const std::string& Name() const { return name_; }
+
+private:
+    static std::string AllocDynaName();
+    static uint64_t dyna_name_counter_;
 
 protected:
     std::string name_;
@@ -20,6 +25,11 @@ protected:
 
 using ObjectPtr = std::shared_ptr<Object>;
 
+class Layout;
+using LayoutPtr = std::shared_ptr<Layout>;
+
+class Widget;
+using WidgetPtr = std::shared_ptr<Widget>;
 }
 
 

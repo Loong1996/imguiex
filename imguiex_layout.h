@@ -2,18 +2,34 @@
 #define IMGUIEX_LAYOUT_H_
 
 #include "imguiex_object.h"
-#include <memory>
+#include <list>
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class Layout : public Object {
 public:
-    Layout(const std::string& name) : Object(name) {}
-
+    explicit Layout(const char* name = nullptr) : Object(name) {}
 };
 
-using LayoutPtr = std::shared_ptr<Layout>;
+// class VBoxLayout : public Layout {
+// public:
+//     explicit VBoxLayout(const char* name = nullptr) : Layout(name) {}
 
-} // namespace imguiex
+// public:
+//     void AddWidget(WidgetPtr ptr) {
+//         widgets_.push_back(ptr);
+//     }
+
+//     virtual void Render() override {
+//         for (auto& widget : widgets_) {
+//             widget->Render();
+//         }
+//     }
+
+// private:
+//     std::list<WidgetPtr> widgets_;
+// };
+
+} // namespace ImGuiEx
 
 #endif // IMGUIEX_LAYOUT_H_

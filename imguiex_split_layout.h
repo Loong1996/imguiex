@@ -4,14 +4,14 @@
 #include "imguiex_layout.h"
 #include "imguiex_widget.h"
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class SplitLayout : public Layout {
     public:
     enum Orientation { Horizontal, Vertical };
     SplitLayout(Orientation orientation, float split_ration, WidgetPtr left_or_top, WidgetPtr right_or_bottom)
         : orientation_(orientation), split_ration_(split_ration),
-        left_or_top_(left_or_top), right_or_bottom_(right_or_bottom), Layout("xxx") {
+        left_or_top_(left_or_top), right_or_bottom_(right_or_bottom), Layout(nullptr) {
     }
 
     virtual void Render() override {
@@ -34,7 +34,7 @@ class SplitLayout : public Layout {
             if (ImGui::IsItemActive() && ImGui::IsMouseDragging(0)) {
                 float delta = ImGui::GetIO().MouseDelta.x / size.x;
                 split_ration_ += delta;
-                split_ration_ = std::clamp(split_ration_, 0.1f, 0.9f);
+                split_ration_ = std::clamp(split_ration_, 0.0001f, 1.0f);
             }
 
             ImGui::SameLine();
@@ -58,7 +58,7 @@ class SplitLayout : public Layout {
             if (ImGui::IsItemActive() && ImGui::IsMouseDragging(0)) {
                 float delta = ImGui::GetIO().MouseDelta.y / size.y;
                 split_ration_ += delta;
-                split_ration_ = std::clamp(split_ration_, 0.1f, 0.9f);
+                split_ration_ = std::clamp(split_ration_, 0.01f, 0.99f);
             }
 
             ImGui::SetCursorScreenPos(old);
@@ -76,6 +76,6 @@ private:
     WidgetPtr right_or_bottom_;
 };
 
-} // namespace imguiex
+} // namespace ImGuiEx
 
 #endif // IMGUIEX_SPLIT_LAYOUT_H_

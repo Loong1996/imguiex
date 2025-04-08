@@ -4,16 +4,15 @@
 #include "imguiex_object.h"
 #include <memory>
 
-namespace imguiex {
+namespace ImGuiEx {
 
 class Widget : public Object {
 public:
-    Widget(const std::string& name) : Object(name) {}
+    Widget(const char* name = nullptr) : Object(name) {}
     virtual ~Widget() = default;
     virtual void Render() = 0;
 };
 
-using WidgetPtr = std::shared_ptr<Widget>;
 
 }
 

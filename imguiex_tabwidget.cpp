@@ -1,9 +1,9 @@
 #include "imguiex_tabwidget.h"
 #include "imgui.h"
 
-namespace imguiex {
+namespace ImGuiEx {
 
-TabWidget::TabWidget(const std::string& name) 
+TabWidget::TabWidget(const char* name)
     : cur_tab(0), Widget(name) {
 }
 
@@ -27,4 +27,4 @@ void TabWidget::AddTab(const std::string& tab_name, WidgetPtr tab) {
     tabs_.emplace_back(tab);
 }
 
-} // namespace imguiex
+} // namespace ImGuiEx
