@@ -13,7 +13,7 @@ Object::Object(const char* name) {
 }
 
 std::string Object::AllocDynaName() {
-    std::string name = "imguiex_inner_obj_";
+    std::string name = "##imguiex_inner_obj_";
     name += std::to_string(dyna_name_counter_);
     dyna_name_counter_++;
     return name;

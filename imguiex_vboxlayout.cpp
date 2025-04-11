@@ -8,9 +8,9 @@ void VBoxLayout::AddWidget(WidgetPtr ptr) {
     widgets_.push_back(ptr);
 }
 
-void VBoxLayout::AddLayout(LayoutPtr ptr) {
-    auto w = std::make_shared<CustomWidget>([ptr](auto& ctx) { 
-        ImGui::BeginChild(ctx.Name().c_str(), ImVec2(0, 0),  ImGuiChildFlags_ResizeY);
+void VBoxLayout::AddLayout(LayoutPtr ptr, ImGuiChildFlags child_flags, ImGuiWindowFlags window_flags) {
+    auto w = std::make_shared<CustomWidget>([ptr, child_flags, window_flags](auto& ctx) { 
+        ImGui::BeginChild(ctx.Name().c_str(), ImVec2(0, 0), child_flags, window_flags);
         ptr->Render();
         ImGui::EndChild();
     });

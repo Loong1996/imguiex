@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <cstdint>
+#include "imgui.h"
 
 namespace ImGuiEx {
 
@@ -19,7 +20,7 @@ private:
     static std::string AllocDynaName();
     static uint64_t dyna_name_counter_;
 
-protected:
+private:
     std::string name_;
 };
 

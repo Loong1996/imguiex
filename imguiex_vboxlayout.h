@@ -12,7 +12,7 @@ public:
 
 public:
     void AddWidget(WidgetPtr ptr);
-    void AddLayout(LayoutPtr ptr);
+    void AddLayout(LayoutPtr ptr, ImGuiChildFlags child_flags = ImGuiChildFlags_ResizeY, ImGuiWindowFlags window_flags = ImGuiWindowFlags_None);
     virtual void Render() override;
 
 private:

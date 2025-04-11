@@ -8,7 +8,7 @@ namespace ImGuiEx {
 
 class CustomWidget : public Widget {
 public:
-    using RenderCallback = std::function<void(Widget& ctx)>;
+    using RenderCallback = std::function<void(CustomWidget& ctx)>;
 
     CustomWidget(RenderCallback render_callback, const char* name = nullptr)
         :  render_callback_(render_callback), Widget(name) {}
